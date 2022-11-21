@@ -1,4 +1,4 @@
-import { usersSchema } from "../models/user.model";
+import { usersSchema } from "../models/user.model.js";
 
 export function userSchemaValidation(req, res, next) {
   const user = req.body;

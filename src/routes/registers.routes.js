@@ -1,10 +1,11 @@
 import { Router } from "express";
-import { insertRegister, getRegisters } from "../controllers/registers.controller.js";
+import { insertRegister, getRegisters } from "../controllers/registers.controllers.js";
 import { registerSchemaValidation } from "../middlewares/registerSchemaValidation.middleware.js";
+import { userTokenValidation } from "../middlewares/userTokenValidation.middleware.js";
 
 const router = Router();
 
-router.post("/register", registerSchemaValidation, insertRegister);
-router.get("/register", getRegisters);
+router.get("/registers", userTokenValidation, getRegisters);
+router.post("/registers", registerSchemaValidation, userTokenValidation, insertRegister);
 
 export default router;
